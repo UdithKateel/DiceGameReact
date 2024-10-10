@@ -9,6 +9,7 @@ const Numbox = ({selectnum,setselectnum}) => {
     console.log(selectnum);
   }, [selectnum]);
   return (
+ 
     <Numselectblock>
        {selectnum==undefined&&(
        <small style={{color:'red'}}>You have not selected a number</small>
@@ -22,6 +23,7 @@ const Numbox = ({selectnum,setselectnum}) => {
       </Numselect>
       <h2>Select Num</h2>
       </Numselectblock>
+    
 
   )
 }
@@ -51,3 +53,18 @@ export default Numbox
   align-items:center;
   
   `
+  const Container = styled.div`
+  width: 80%; /* Default for larger screens */
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    /* For tablets and smaller screens */
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    /* For mobile phones */
+    padding: 10px;
+    text-align: center;
+  }
+`;

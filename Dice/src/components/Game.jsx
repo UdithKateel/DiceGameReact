@@ -68,7 +68,7 @@ const resetscore=()=>{
 
 
   return (
-  <main>
+  <Container>
     <Score className={styles.top}>
       <div>
         <h1>{score}</h1>
@@ -81,7 +81,7 @@ const resetscore=()=>{
     </Score>
     <DiceRoll randomChoice={randomChoice} makeRandomChoice={makeRandomChoice} resetscore={resetscore}  />
    
-  </main>
+  </Container>
   )
 }
 
@@ -101,4 +101,19 @@ export default Game
     margin-left: 20px; /* Left margin for p */
   }
     padding-top:10px;
+`;
+const Container = styled.div`
+  width: 80%; /* Default for larger screens */
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    /* For tablets and smaller screens */
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    /* For mobile phones */
+    padding: 10px;
+    text-align: center;
+  }
 `;

@@ -9,6 +9,7 @@ const displayrule=()=>{
 }
 
   return (
+    
     <Pack>
     <DiceRollBlock>
         <img src={randomChoice.image} value={randomChoice.value} alt="" onClick={makeRandomChoice} />
@@ -27,6 +28,7 @@ const displayrule=()=>{
             </p>
         </RuleBlock>)}
         </Pack>
+       
     
   )
 }
@@ -66,3 +68,18 @@ display:flex;
 flex-direction:column;
 gap:20px;
 `
+const Container = styled.div`
+  width: 80%; /* Default for larger screens */
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    /* For tablets and smaller screens */
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    /* For mobile phones */
+    padding: 10px;
+    text-align: center;
+  }
+`;
