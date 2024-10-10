@@ -1,50 +1,68 @@
 import React, { useState } from 'react'
-import dice1 from '../images/dice_1.png'
-import dice2 from '../images/dice_2.png'
-import dice3 from '../images/dice_3.png'
-import dice4 from '../images/dice_4.png'
-import dice5 from '../images/dice_5.png'
-import dice6 from '../images/dice_6.png'
-const dicearr=[{
-    image:{dice1},
-    value:1
 
-        },{
-    image:{dice2},
-    value:2
+import styled from 'styled-components'
 
-        },{
-    image:{dice3},
-    value:3
-
-        },{
-    image:{dice4},
-    value:4
-
-        },{
-    image:{dice5},
-    value:5
-
-        },{
-    image:{dice6},
-    value:6
-
-        },
-        
-
-]
-const [randomChoice,setrandomChoice]=useState();
-const makeRandomChoice=()=>{
-    const index=Math.floor(Math.random()*dicearr.length());
-    setrandomChoice(dicearr[index]);
+const DiceRoll = ({randomChoice,makeRandomChoice ,resetscore}) => {
+const [rule,setrule]=useState(false);
+const displayrule=()=>{
+  setrule((prev)=>!prev)
 }
-const DiceRoll = () => {
+
   return (
-    <div>
-        
-        
-    </div>
+    <Pack>
+    <DiceRollBlock>
+        <img src={randomChoice.image} value={randomChoice.value} alt="" onClick={makeRandomChoice} />
+         <h3>Click on Dice</h3>
+        <button onClick={resetscore} >Reset Score</button>
+        <button onClick={displayrule}  >Rules</button>
+       
+        </DiceRollBlock>
+        {rule&&(<RuleBlock>
+            <h3>How to Play</h3>
+            <p>
+                Select Any Number <br />
+                Click on dice to Roll <br />
+                after clicking if selected number and dice match you get the points on dice <br />
+                on mismatch you loose 2 points 
+            </p>
+        </RuleBlock>)}
+        </Pack>
+    
   )
 }
 
 export default DiceRoll
+const DiceRollBlock=styled.div`
+img{
+width:200px;
+height:200px;
+margin:0;
+padding:0;
+}
+width:200px;
+height:200px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+margin:auto;
+margin-top:50px;
+margin-bottom :50px;
+gap:15px;
+`
+const RuleBlock = styled.div`
+border:none;
+background-color:#FBF1F1;
+text-align:center;
+width:fit-content;
+margin:auto;
+margin-top:10px;
+padding:5px;
+height:fit-content;
+
+`
+const Pack=styled.div`
+display:flex;
+flex-direction:column;
+gap:20px;
+`
