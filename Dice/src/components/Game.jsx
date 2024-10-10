@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Numbox from './Numbox';
 import styles from './Game.module.css'
 import styled from 'styled-components';
+import DiceRoll from './DiceRoll';
 const Game = () => {
   const [score,setScore]=useState(0);
-  const arr =[1,2,3,4,5,6];
+
  const Score = styled.div`
   h1 {
     font-size: 100px;
@@ -19,10 +20,9 @@ const Game = () => {
     padding: 0;
     margin-left: 20px; /* Left margin for p */
   }
+    padding-top:10px;
 `;
-const [selectnum,setselectnum]=useState([]);
 
-  console.log(selectnum)
 
   return (
   <main>
@@ -31,10 +31,12 @@ const [selectnum,setselectnum]=useState([]);
         <h1>{score}</h1>
       <p>Total Score</p>
       </div>
-      <div className={styles.top}>{arr.map((value,i)=>(
-<Numbox key={i} num={value} onClick={()=>setselectnum(value)}/>
-      ))}</div>
+      
+      <Numbox/>
+      
     </Score>
+    <DiceRoll/>
+    
   </main>
   )
 }
